@@ -4,8 +4,8 @@
 #' @param param_values A numeric vector that contains the values of the target hyperparameter to be tested.
 #' @param param_name A character string that specifies the name of the target hyperparameter. Could be one of "context_size", "h", or "batch_size". Default is "context_size".
 #' @param other_params A list that contains the values of the other hyperparameters. The list should include the following elements:
+#'   * data: A data frame that contains the data to be processed.
 #'   * n_simulations: An integer that specifies the number of simulations to run. Default is 50.
-#'   * data_path: A character string that specifies the path to the data file. Default is "rocstories.csv".
 #'   * random_seed: An integer that sets the seed for reproducibility. Default is 900.
 #'   * train_portion: A numeric value that specifies the portion of the data to be used for training. Default is 0.8.
 #'   * val_portion: A numeric value that specifies the portion of the data to be used for validation. Default is 0.1.
@@ -21,8 +21,9 @@
 #' # define hyperparameters you want to explore
 #' embedding_dim_values <- c(10000,3319,300,30,3)
 #' context_size_values <- c(2, 3, 4)
+#' load(rocstories)
 #' # must do: define the parameters passed to the run_simulation function
-#' other_params <- list(n_simulations = 50, data_path = "rocstories.csv", random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
+#' other_params <- list(data = rocstories, n_simulations = 50, random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
 #' results <- run_simulations(embedding_dim_values=embedding_dim_values, param_values=context_size_values, param_name="context_size", other_params)
 #'
 #'
@@ -82,8 +83,8 @@ run_simulations <- function(embedding_dim_values, param_values, param_name, othe
 
 #' @title Run Simulation
 #' @description This function runs a series of simulations for the neural network model.
+#' @param data A data frame that contains the data to be processed.
 #' @param n_simulations An integer that specifies the number of simulations to run. Default is 10.
-#' @param data_path A string that specifies the path to the data file. Default is "rocstories.csv".
 #' @param random_seed An integer that sets the seed for reproducibility. Default is 900.
 #' @param context_size An integer that specifies the context size. Default is 3.
 #' @param train_portion A numeric value that specifies the portion of the data to be used for training. Default is 0.8.
@@ -105,13 +106,13 @@ run_simulations <- function(embedding_dim_values, param_values, param_name, othe
 #' run_simulation(n_simulations=10, data_path="rocstories.csv", random_seed=900)
 #'
 #' @export
-run_simulation <- function(n_simulations=10, data_path="rocstories.csv", random_seed=900, context_size=3, train_portion=0.8, val_portion=0.1, test_portion=0.1, lowest_frequency=3, embedding_dim=30, batch_size=256, epochs=10, h=50, learning_rate=5e-3, early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
+run_simulation <- function(data,n_simulations=10, random_seed=900, context_size=3, train_portion=0.8, val_portion=0.1, test_portion=0.1, lowest_frequency=3, embedding_dim=30, batch_size=256, epochs=10, h=50, learning_rate=5e-3, early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
   # Assertions
   if (!is.numeric(n_simulations) || length(n_simulations) != 1 || round(n_simulations) != n_simulations || n_simulations < 0) {
     stop("n_simulations must be a non-negative integer")
   }
-  if (!is.character(data_path) || length(data_path) != 1) {
-    stop("data_path must be a string")
+  if (!is.data.frame(data)) {
+    stop("data_path must be a data frame")
   }
   if (!is.numeric(random_seed) || length(random_seed) != 1 || round(random_seed) != random_seed || random_seed < 0) {
     stop("random_seed must be a non-negative integer")

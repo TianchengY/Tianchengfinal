@@ -4,10 +4,10 @@
 \alias{process_data}
 \title{Process Data}
 \usage{
-process_data(data_path, context_size = 3, lowest_frequency = 3)
+process_data(data, context_size = 3, lowest_frequency = 3)
 }
 \arguments{
-\item{data_path}{A string that specifies the path to the data file.}
+\item{data}{A data frame that contains the data to be processed.}
 
 \item{context_size}{An integer that specifies the context size which is the length of the input word sequence to the model. Default is 3.}
 

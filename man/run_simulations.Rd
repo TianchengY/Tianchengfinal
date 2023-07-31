@@ -14,8 +14,8 @@ run_simulations(embedding_dim_values, param_values, param_name, other_params)
 \item{param_name}{A character string that specifies the name of the target hyperparameter. Could be one of "context_size", "h", or "batch_size". Default is "context_size".}
 
 \item{other_params}{A list that contains the values of the other hyperparameters. The list should include the following elements:
+* data: A data frame that contains the data to be processed.
 * n_simulations: An integer that specifies the number of simulations to run. Default is 50.
-* data_path: A character string that specifies the path to the data file. Default is "rocstories.csv".
 * random_seed: An integer that sets the seed for reproducibility. Default is 900.
 * train_portion: A numeric value that specifies the portion of the data to be used for training. Default is 0.8.
 * val_portion: A numeric value that specifies the portion of the data to be used for validation. Default is 0.1.
@@ -37,8 +37,9 @@ This function runs simulations for combinations of embedding size and target hyp
 # define hyperparameters you want to explore
 embedding_dim_values <- c(10000,3319,300,30,3)
 context_size_values <- c(2, 3, 4)
+load(rocstories)
 # must do: define the parameters passed to the run_simulation function
-other_params <- list(n_simulations = 50, data_path = "rocstories.csv", random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
+other_params <- list(data = rocstories, n_simulations = 50, random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
 results <- run_simulations(embedding_dim_values=embedding_dim_values, param_values=context_size_values, param_name="context_size", other_params)
 
 

@@ -1,16 +1,16 @@
 #' @title Process Data
 #' @description This function loads the data, converts all sentences to lowercase, creates term frequency of the words, and converts words to unique ids.
-#' @param data_path A string that specifies the path to the data file.
+#' @param data A data frame that contains the data to be processed.
 #' @param context_size An integer that specifies the context size which is the length of the input word sequence to the model. Default is 3.
 #' @param lowest_frequency An integer that specifies the lowest frequency for a word to be included in the vocabulary.
 #'                        The word with frequency less than 3 will be replaced to a special token <UNK> . Default is 3.
 #' @return A list that includes the processed data (input word sequence and target subsequent word) and
 #'        the vocabulary (a table for mapping a word with its unique word id).
 #' @export
-process_data <- function(data_path, context_size=3, lowest_frequency=3) {
+process_data <- function(data, context_size=3, lowest_frequency=3) {
   # Assertions
-  if (!is.character(data_path) || length(data_path) != 1) {
-    stop("data_path must be a single character string")
+  if (!is.data.frame(data)) {
+    stop("data_path must be a data frame")
   }
   if (!is.numeric(context_size) || length(context_size) != 1 || round(context_size) != context_size || context_size < 0) {
     stop("context_size must be a non-negative integer")

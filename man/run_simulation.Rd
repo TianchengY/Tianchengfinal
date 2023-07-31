@@ -5,8 +5,8 @@
 \title{Run Simulation}
 \usage{
 run_simulation(
+  data,
   n_simulations = 10,
-  data_path = "rocstories.csv",
   random_seed = 900,
   context_size = 3,
   train_portion = 0.8,
@@ -24,9 +24,9 @@ run_simulation(
 )
 }
 \arguments{
-\item{n_simulations}{An integer that specifies the number of simulations to run. Default is 10.}
+\item{data}{A data frame that contains the data to be processed.}
 
-\item{data_path}{A string that specifies the path to the data file. Default is "rocstories.csv".}
+\item{n_simulations}{An integer that specifies the number of simulations to run. Default is 10.}
 
 \item{random_seed}{An integer that sets the seed for reproducibility. Default is 900.}
 
