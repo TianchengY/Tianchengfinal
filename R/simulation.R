@@ -17,8 +17,7 @@
 #'   * early_stop_patience: An integer that specifies the number of epochs with no improvement after which training will be stopped. Default is 2.
 #'   * verbose: An integer that specifies the verbosity mode. Default is 1.
 #' @return A data frame that includes the results of the simulations.
-#' @example
-#'
+#' @examples
 #' # define hyperparameters you want to explore
 #' embedding_dim_values <- c(10000,3319,300,30,3)
 #' context_size_values <- c(2, 3, 4)
@@ -101,8 +100,7 @@ run_simulations <- function(embedding_dim_values, param_values, param_name, othe
 #' @param verbose An integer that specifies the verbosity mode. Default is 1.
 #' @return A list that includes the mean test accuracy, the Monte Carlo Standard Error of the test accuracy, the mean train accuracy, and the Monte Carlo Standard Error of the train accuracy.
 #'
-#' @example
-#'
+#' @examples
 #' # run simulation with default hyperparameter settings
 #' run_simulation(n_simulations=10, data_path="rocstories.csv", random_seed=900)
 #'
