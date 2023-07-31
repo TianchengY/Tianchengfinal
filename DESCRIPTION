@@ -1,0 +1,21 @@
+Package: Tianchengfinal
+Type: Package
+Title: Tiancheng's R package for STAT900 final exam
+Version: 0.1.0
+Author: Tiancheng Yang
+Maintainer: Tiancheng Yang <t77yang@uwaterloo.ca>
+Description: This package provides a set of functions for reproducing the results
+        of the experiments in Tiancheng's final exam report
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    stringr,
+    tm,
+    readr,
+    mcmcse,
+    tensorflow,
+    keras,
+    dplyr,
+    ggplot2,
+    knitr
