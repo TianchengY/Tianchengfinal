@@ -10,7 +10,7 @@
 process_data <- function(data, context_size=3, lowest_frequency=3) {
   # Assertions
   if (!is.data.frame(data)) {
-    stop("data_path must be a data frame")
+    stop("data must be a data frame")
   }
   if (!is.numeric(context_size) || length(context_size) != 1 || round(context_size) != context_size || context_size < 0) {
     stop("context_size must be a non-negative integer")
@@ -18,9 +18,6 @@ process_data <- function(data, context_size=3, lowest_frequency=3) {
   if (!is.numeric(lowest_frequency) || length(lowest_frequency) != 1 || round(lowest_frequency) != lowest_frequency || lowest_frequency < 0) {
     stop("lowest_frequency must be a non-negative integer")
   }
-
-  # load data
-  data <- read_csv(data_path, col_names = FALSE)
 
   UNK_symbol <- "<UNK>"
   vocab <- c(UNK_symbol)

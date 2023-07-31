@@ -2,7 +2,7 @@
 #' @description A text corpus derived from the ROCStories dataset. It comprises 9426 lines of English sentences. Each six adjacent sentences in this dataset form a small story.
 #' @format A data frame with 9426 rows and 1 column:
 #' \describe{
-#'   \item{V1}{The text of the sentence.}
+#'   \item{X1}{The text of the sentence.}
 #' }
 #' @details
 #' All sentences in the ROCStories dataset were converted to lowercase first and a word frequency table was created. Words with a frequency of 3 or above were selected to form the vocabulary table (words with frequency less than 3 was replaced with a special character 'UNK'), and each word was assigned a unique ID. Then, for each simulation, the dataset was shuffled and partitioned into training, validation, and testing sets with a proportion of 80%, 10% and 10%, and each word was replaced with its corresponding ID. A series of training instances and corresponding labels were created as well, where each training instance consisted of 'context size' continuous words, and the corresponding label was the word following these words.

@@ -7,7 +7,7 @@
 \format{
 A data frame with 9426 rows and 1 column:
 \describe{
-  \item{V1}{The text of the sentence.}
+  \item{X1}{The text of the sentence.}
 }
 }
 \source{

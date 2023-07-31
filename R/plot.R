@@ -9,10 +9,10 @@
 #' @return A ggplot object that represents the plot.
 #' @examples
 #' # to draw the plot for embedding dimension of accuracy vs. context size
-#' plot_test_accuracy(results, param_name="context_size", param_values = c(3,4,5))
+#' # plot_test_accuracy(results, param_name="context_size", param_values = c(3,4,5))
 #'
 #' @export
-plot_test_accuracy <- function(results, param_name, param_values, colors = c("red", "blue", "yellow", "red", "blue"), linetypes = c("solid", "dashed", "solid", "dashed", "solid")) {
+plot_test_accuracy <- function(results, param_name, param_values, colors = c("red", "blue", "yellow", "red", "blue"), linetypes = c("solid", "dashed", "solid", "dashed", "solid"), plot_title="Test Accuracy with MCSE") {
   # Assertions
   if (!is.data.frame(results)) {
     stop("results must be a data frame")
@@ -47,7 +47,7 @@ plot_test_accuracy <- function(results, param_name, param_values, colors = c("re
     scale_linetype_manual(values = linetypes) +
     labs(x = param_name, y = "Accuracy", colour = "Embedding Dimension", linetype = "Embedding Dimension") +
     theme_bw() +
-    ggtitle("Test Accuracy with MCSE")
+    ggtitle(plot_title)
 
   return(plot)
 }
@@ -63,9 +63,9 @@ plot_test_accuracy <- function(results, param_name, param_values, colors = c("re
 #' @return A ggplot object that represents the plot.
 #' @examples
 #' # to draw the plot for embedding dimension of accuracy vs. context size
-#' plot_test_accuracy(results, param_name="context_size", param_values = c(3,4,5))
+#' # plot_train_accuracy(results, param_name="context_size", param_values = c(3,4,5))
 #' @export
-plot_train_accuracy <- function(results, param_name, param_values, colors = c("red", "blue", "yellow", "red", "blue"), linetypes = c("solid", "dashed", "solid", "dashed", "solid")) {
+plot_train_accuracy <- function(results, param_name, param_values, colors = c("red", "blue", "yellow", "red", "blue"), linetypes = c("solid", "dashed", "solid", "dashed", "solid"),plot_title = "Training Accuracy with MCSE") {
   # Assertions
   if (!is.data.frame(results)) {
     stop("results must be a data frame")
@@ -100,7 +100,7 @@ plot_train_accuracy <- function(results, param_name, param_values, colors = c("r
     scale_linetype_manual(values = linetypes) +
     labs(x = param_name, y = "Accuracy", colour = "Embedding Dimension", linetype = "Embedding Dimension") +
     theme_bw() +
-    ggtitle("Training Accuracy with MCSE")
+    ggtitle(plot_title)
 
   return(plot)
 }

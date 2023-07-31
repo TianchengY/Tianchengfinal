@@ -63,7 +63,9 @@ A list that includes the mean test accuracy, the Monte Carlo Standard Error of t
 This function runs a series of simulations for the neural network model.
 }
 \examples{
+# load data
+data("rocstories", package = "Tianchengfinal")
 # run simulation with default hyperparameter settings
-run_simulation(n_simulations=10, data_path="rocstories.csv", random_seed=900)
+run_simulation(data = rocstories, n_simulations=10, random_seed=900)
 
 }

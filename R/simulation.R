@@ -21,7 +21,7 @@
 #' # define hyperparameters you want to explore
 #' embedding_dim_values <- c(10000,3319,300,30,3)
 #' context_size_values <- c(2, 3, 4)
-#' load(rocstories)
+#' data("rocstories", package = "Tianchengfinal")
 #' # must do: define the parameters passed to the run_simulation function
 #' other_params <- list(data = rocstories, n_simulations = 50, random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
 #' results <- run_simulations(embedding_dim_values=embedding_dim_values, param_values=context_size_values, param_name="context_size", other_params)
@@ -102,8 +102,10 @@ run_simulations <- function(embedding_dim_values, param_values, param_name, othe
 #' @return A list that includes the mean test accuracy, the Monte Carlo Standard Error of the test accuracy, the mean train accuracy, and the Monte Carlo Standard Error of the train accuracy.
 #'
 #' @examples
+#' # load data
+#' data("rocstories", package = "Tianchengfinal")
 #' # run simulation with default hyperparameter settings
-#' run_simulation(n_simulations=10, data_path="rocstories.csv", random_seed=900)
+#' run_simulation(data = rocstories, n_simulations=10, random_seed=900)
 #'
 #' @export
 run_simulation <- function(data,n_simulations=10, random_seed=900, context_size=3, train_portion=0.8, val_portion=0.1, test_portion=0.1, lowest_frequency=3, embedding_dim=30, batch_size=256, epochs=10, h=50, learning_rate=5e-3, early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
@@ -162,7 +164,7 @@ run_simulation <- function(data,n_simulations=10, random_seed=900, context_size=
   test_accuracies <- numeric(n_simulations)
   train_accuracies <- numeric(n_simulations)
 
-  processed_data <- process_data(data_path=data_path, context_size=context_size, lowest_frequency=lowest_frequency)
+  processed_data <- process_data(data=data, context_size=context_size, lowest_frequency=lowest_frequency)
 
   for (i in 1:n_simulations) {
     print(paste("Running simulation", i,"context_size: ",context_size, "embedding size: ",embedding_dim))

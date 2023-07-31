@@ -9,7 +9,8 @@ plot_train_accuracy(
   param_name,
   param_values,
   colors = c("red", "blue", "yellow", "red", "blue"),
-  linetypes = c("solid", "dashed", "solid", "dashed", "solid")
+  linetypes = c("solid", "dashed", "solid", "dashed", "solid"),
+  plot_title = "Training Accuracy with MCSE"
 )
 }
 \arguments{
@@ -33,5 +34,5 @@ This function plots the train accuracy with Monte Carlo Standard Error (MCSE) fo
 }
 \examples{
 # to draw the plot for embedding dimension of accuracy vs. context size
-plot_test_accuracy(results, param_name="context_size", param_values = c(3,4,5))
+# plot_train_accuracy(results, param_name="context_size", param_values = c(3,4,5))
 }
