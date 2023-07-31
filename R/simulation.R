@@ -17,6 +17,16 @@
 #'   * early_stop_patience: An integer that specifies the number of epochs with no improvement after which training will be stopped. Default is 2.
 #'   * verbose: An integer that specifies the verbosity mode. Default is 1.
 #' @return A data frame that includes the results of the simulations.
+#' @example
+#'
+#' # define hyperparameters you want to explore
+#' embedding_dim_values <- c(10000,3319,300,30,3)
+#' context_size_values <- c(2, 3, 4)
+#' # must do: define the parameters passed to the run_simulation function
+#' other_params <- list(n_simulations = 50, data_path = "rocstories.csv", random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
+#' results <- run_simulations(embedding_dim_values=embedding_dim_values, param_values=context_size_values, param_name="context_size", other_params)
+#'
+#'
 #' @export
 run_simulations <- function(embedding_dim_values, param_values, param_name, other_params) {
   # Assertions
@@ -90,6 +100,12 @@ run_simulations <- function(embedding_dim_values, param_values, param_name, othe
 #' @param early_stop_patience An integer that specifies the number of epochs with no improvement after which training will be stopped. Default is 3.
 #' @param verbose An integer that specifies the verbosity mode. Default is 1.
 #' @return A list that includes the mean test accuracy, the Monte Carlo Standard Error of the test accuracy, the mean train accuracy, and the Monte Carlo Standard Error of the train accuracy.
+#'
+#' @example
+#'
+#' # run simulation with default hyperparameter settings
+#' run_simulation(n_simulations=10, data_path="rocstories.csv", random_seed=900)
+#'
 #' @export
 run_simulation <- function(n_simulations=10, data_path="rocstories.csv", random_seed=900, context_size=3, train_portion=0.8, val_portion=0.1, test_portion=0.1, lowest_frequency=3, embedding_dim=30, batch_size=256, epochs=10, h=50, learning_rate=5e-3, early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
   # Assertions

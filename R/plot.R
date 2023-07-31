@@ -7,6 +7,11 @@
 #' @param linetypes A character vector that specifies the line types to be used in the plot. Default is c("solid", "dashed", "solid", "dashed", "solid").
 #' @param plot_title A string that specifies the title of the plot. Default is "Test Accuracy with MCSE".
 #' @return A ggplot object that represents the plot.
+#' @example
+#'
+#' # to draw the plot for embedding dimension of accuracy vs. context size
+#' plot_test_accuracy(results, param_name="context_size", param_values = c(3,4,5))
+#'
 #' @export
 plot_test_accuracy <- function(results, param_name, param_values, colors = c("red", "blue", "yellow", "red", "blue"), linetypes = c("solid", "dashed", "solid", "dashed", "solid")) {
   # Assertions
