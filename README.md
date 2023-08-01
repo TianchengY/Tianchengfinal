@@ -4,7 +4,7 @@ The `Tianchengfinal` package is built to explore  the impact of word embedding d
 
 # Installation and Examples
 
-Please refer to the [vignette]([link-to-vignette](https://github.com/TianchengY/Tianchengfinal/blob/master/vignette/Vignette.pdf)) for more details. 
+Please refer to the [vignette](https://github.com/TianchengY/Tianchengfinal/blob/master/vignette/Vignette.pdf) for more details. 
 
 ## References
 
