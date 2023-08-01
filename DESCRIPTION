@@ -9,7 +9,7 @@ Description: This package provides a set of functions for reproducing the result
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: 
+Depends: 
     stringr,
     tm,
     readr,
