@@ -6,6 +6,9 @@
 #'                        The word with frequency less than 3 will be replaced to a special token <UNK> . Default is 3.
 #' @return A list that includes the processed data (input word sequence and target subsequent word) and
 #'        the vocabulary (a table for mapping a word with its unique word id).
+#' @import stringr
+#' @import tm
+#' @import dplyr
 #' @export
 process_data <- function(data, context_size=3, lowest_frequency=3) {
   # Assertions
@@ -94,6 +97,9 @@ process_data <- function(data, context_size=3, lowest_frequency=3) {
 #' @param val_portion A numeric value between 0 and 1 that specifies the portion of the data to be used for validation. Default is 0.1.
 #' @param test_portion A numeric value between 0 and 1 that specifies the portion of the data to be used for testing. Default is 0.1.
 #' @return A list that includes the training, validation, and test sets, and the vocabulary (a table for mapping a word with its unique word id).
+#' @import stringr
+#' @import tm
+#' @import dplyr
 #' @export
 split_data <- function(x_data, y_data, vocab, random_seed=900, train_portion=0.8, val_portion=0.1, test_portion=0.1) {
   # Assertions

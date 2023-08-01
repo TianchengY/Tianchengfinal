@@ -10,7 +10,8 @@
 #' @examples
 #' # to draw the plot for embedding dimension of accuracy vs. context size
 #' # plot_test_accuracy(results, param_name="context_size", param_values = c(3,4,5))
-#'
+#' @import dplyr
+#' @import ggplot2
 #' @export
 plot_test_accuracy <- function(results, param_name, param_values, colors = c("red", "blue", "yellow", "red", "blue"), linetypes = c("solid", "dashed", "solid", "dashed", "solid"), plot_title="Test Accuracy with MCSE") {
   # Assertions
@@ -64,6 +65,9 @@ plot_test_accuracy <- function(results, param_name, param_values, colors = c("re
 #' @examples
 #' # to draw the plot for embedding dimension of accuracy vs. context size
 #' # plot_train_accuracy(results, param_name="context_size", param_values = c(3,4,5))
+#'
+#' @import dplyr
+#' @import ggplot2
 #' @export
 plot_train_accuracy <- function(results, param_name, param_values, colors = c("red", "blue", "yellow", "red", "blue"), linetypes = c("solid", "dashed", "solid", "dashed", "solid"),plot_title = "Training Accuracy with MCSE") {
   # Assertions

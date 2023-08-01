@@ -2,6 +2,7 @@
 #' @description This function selects specific columns from the results data frame and creates a table.
 #' @param results A data frame that contains the results of the simulations. It should have columns for "embedding_dim", "context_size", "train_accuracy", "mcse_train_accuracy", "test_accuracy", and "mcse_test_accuracy"
 #' @return A table that contains the selected columns.
+#' @import dplyr
 #' @export
 create_table <- function(results) {
   # Check if 'results' is a data frame

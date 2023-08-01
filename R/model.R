@@ -16,6 +16,12 @@
 #' @param early_stop_patience An integer that specifies the number of epochs with no improvement after which training will be stopped. Default is 3.
 #' @param verbose An integer that specifies the verbosity mode. Default is 1.
 #' @return A list that includes the trained model and the final training accuracy.
+#' @import stringr
+#' @import tm
+#' @import dplyr
+#' @import tensorflow
+#' @import keras
+#' @importFrom mcmcse mcse
 #' @export
 model_training <- function(x_train, y_train_onehot, x_val, y_val_onehot, vocab, embedding_dim=30, context_size=2, random_seed=900, batch_size=256,epochs=10,h=50,learning_rate=5e-3,early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
   # Assertions
@@ -126,6 +132,12 @@ calculate_accuracy <- function(y_pred, y_test) {
 #' @param words A list of character vectors that represent word pairs. Default: list(c("her", "his"), c("her", "the"))
 #' @param vocab A character vector that contains the vocabulary.
 #' @return A list that contains the cosine similarities for each word pair.
+#' @import stringr
+#' @import tm
+#' @import dplyr
+#' @import tensorflow
+#' @import keras
+#' @importFrom mcmcse mcse
 #' @export
 calculate_similarities <- function(model, words=list(c("her", "his"), c("her", "the")), vocab) {
   # Assertions

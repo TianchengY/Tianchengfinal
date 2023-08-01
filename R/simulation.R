@@ -25,7 +25,12 @@
 #' # must do: define the parameters passed to the run_simulation function
 #' other_params <- list(data = rocstories, n_simulations = 50, random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
 #' results <- run_simulations(embedding_dim_values=embedding_dim_values, param_values=context_size_values, param_name="context_size", other_params)
-#'
+#' @import stringr
+#' @import tm
+#' @import dplyr
+#' @import tensorflow
+#' @import keras
+#' @importFrom mcmcse mcse
 #'
 #' @export
 run_simulations <- function(embedding_dim_values, param_values, param_name, other_params) {
@@ -100,7 +105,12 @@ run_simulations <- function(embedding_dim_values, param_values, param_name, othe
 #' @param early_stop_patience An integer that specifies the number of epochs with no improvement after which training will be stopped. Default is 3.
 #' @param verbose An integer that specifies the verbosity mode. Default is 1.
 #' @return A list that includes the mean test accuracy, the Monte Carlo Standard Error of the test accuracy, the mean train accuracy, and the Monte Carlo Standard Error of the train accuracy.
-#'
+#' @import stringr
+#' @import tm
+#' @import dplyr
+#' @import tensorflow
+#' @import keras
+#' @importFrom mcmcse mcse
 #' @examples
 #' # load data
 #' data("rocstories", package = "Tianchengfinal")
