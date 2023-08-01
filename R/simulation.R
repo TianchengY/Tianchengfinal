@@ -201,6 +201,8 @@ run_simulation <- function(data,n_simulations=10, random_seed=900, context_size=
     # Store the accuracy
     train_accuracies[i] <- final_train_acc
     test_accuracies[i] <- accuracy
+
+    gc()
   }
 
   # Calculate the mean and standard deviation of the accuracies
