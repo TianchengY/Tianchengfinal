@@ -11,7 +11,7 @@ create_table <- function(results) {
   }
 
   # Add assertion to check if required columns exist in the data frame
-  required_columns <- c("embedding_dim", "context_size", "train_accuracy", "mcse_train_accuracy", "test_accuracy", "mcse_test_accuracy")
+  required_columns <- c("embedding_dim", "param_value", "train_accuracy", "mcse_train_accuracy", "test_accuracy", "mcse_test_accuracy")
   if (!all(required_columns %in% colnames(results))) {
     stop(paste("results must contain the following columns:", paste(required_columns, collapse = ", ")))
   }
