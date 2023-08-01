@@ -22,6 +22,8 @@ process_data <- function(data, context_size=3, lowest_frequency=3) {
     stop("lowest_frequency must be a non-negative integer")
   }
 
+  print(paste("Processing data..."))
+
   UNK_symbol <- "<UNK>"
   vocab <- c(UNK_symbol)
 
