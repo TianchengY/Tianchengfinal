@@ -6,7 +6,7 @@ The `Tianchengfinal` package is built to explore  the impact of word embedding d
 
 Please refer to the [vignette](https://github.com/TianchengY/Tianchengfinal/blob/master/vignette/Vignette.pdf) for more details. 
 
-# Run Experiment in Colab
+# Run Experiments in Colab
 
 Given the complex dependencies associated with the TensorFlow package for R, it is highly recommended to execute the toy experiment on Google Colab. Colab conveniently has all the necessary dependencies pre-installed for users.
 
