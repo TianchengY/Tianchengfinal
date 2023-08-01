@@ -114,7 +114,7 @@ run_simulation <- function(data,n_simulations=10, random_seed=900, context_size=
     stop("n_simulations must be a non-negative integer")
   }
   if (!is.data.frame(data)) {
-    stop("data_path must be a data frame")
+    stop("data must be a data frame")
   }
   if (!is.numeric(random_seed) || length(random_seed) != 1 || round(random_seed) != random_seed || random_seed < 0) {
     stop("random_seed must be a non-negative integer")

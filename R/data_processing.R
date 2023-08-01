@@ -97,12 +97,6 @@ process_data <- function(data, context_size=3, lowest_frequency=3) {
 #' @export
 split_data <- function(x_data, y_data, vocab, random_seed=900, train_portion=0.8, val_portion=0.1, test_portion=0.1) {
   # Assertions
-  if (!is.data.frame(x_data)) {
-    stop("x_data must be a data frame")
-  }
-  if (!is.data.frame(y_data)) {
-    stop("y_data must be a data frame")
-  }
   if (!is.character(vocab) || length(vocab) < 1) {
     stop("vocab must be a non-empty character vector")
   }

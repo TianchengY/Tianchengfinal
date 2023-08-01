@@ -19,18 +19,6 @@
 #' @export
 model_training <- function(x_train, y_train_onehot, x_val, y_val_onehot, vocab, embedding_dim=30, context_size=2, random_seed=900, batch_size=256,epochs=10,h=50,learning_rate=5e-3,early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
   # Assertions
-  if (!is.data.frame(x_train)) {
-    stop("x_train must be a data frame")
-  }
-  if (!is.data.frame(y_train_onehot)) {
-    stop("y_train_onehot must be a data frame")
-  }
-  if (!is.data.frame(x_val)) {
-    stop("x_val must be a data frame")
-  }
-  if (!is.data.frame(y_val_onehot)) {
-    stop("y_val_onehot must be a data frame")
-  }
   if (!is.character(vocab) || length(vocab) < 1) {
     stop("vocab must be a non-empty character vector")
   }
@@ -110,14 +98,6 @@ model_training <- function(x_train, y_train_onehot, x_val, y_val_onehot, vocab, 
 #' @return A vector that contains the predicted labels.
 #' @export
 model_prediction <- function(model, x_test) {
-  # Assertions
-  if (!inherits(model, "keras.engine.sequential.Sequential")) {
-    stop("model must be a keras model object")
-  }
-  if (!is.data.frame(x_test)) {
-    stop("x_test must be a data frame")
-  }
-
   # Predict on test set
   y_pred <- model %>% predict(x_test) %>% k_argmax()
 
@@ -132,14 +112,6 @@ model_prediction <- function(model, x_test) {
 #' @return A numeric value that represents the accuracy.
 #' @export
 calculate_accuracy <- function(y_pred, y_test) {
-  # Assertions
-  if (!is.numeric(y_pred) || length(y_pred) < 1) {
-    stop("y_pred must be a non-empty numeric vector")
-  }
-  if (!is.numeric(y_test) || length(y_test) < 1) {
-    stop("y_test must be a non-empty numeric vector")
-  }
-
   # Calculate accuracy
   accuracy <- sum(as.vector(y_pred == y_test)) / length(y_test)
 
@@ -157,9 +129,6 @@ calculate_accuracy <- function(y_pred, y_test) {
 #' @export
 calculate_similarities <- function(model, words=list(c("her", "his"), c("her", "the")), vocab) {
   # Assertions
-  if (!inherits(model, "keras.engine.sequential.Sequential")) {
-    stop("model must be a keras model object")
-  }
   if (!is.list(words) || length(words) < 1) {
     stop("words must be a non-empty list of character vectors")
   }
