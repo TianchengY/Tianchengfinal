@@ -11,7 +11,9 @@
 #'   * val_portion: A numeric value that specifies the portion of the data to be used for validation. Default is 0.1.
 #'   * test_portion: A numeric value that specifies the portion of the data to be used for testing. Default is 0.1.
 #'   * lowest_frequency: An integer that specifies the lowest frequency of words to be included in the vocabulary. Default is 3.
+#'   * batch_size: An integer that specifies the batch size. Default is 256.
 #'   * epochs: An integer that specifies the number of epochs. Default is 20.
+#'   * h: An integer that specifies the number of units in the hidden layer. Default is 50.
 #'   * learning_rate: A numeric value that specifies the learning rate. Default is 5e-3.
 #'   * early_stop_min_delta: A numeric value that specifies the minimum change in the monitored quantity to qualify as an improvement. Default is 0.01.
 #'   * early_stop_patience: An integer that specifies the number of epochs with no improvement after which training will be stopped. Default is 2.
@@ -23,7 +25,7 @@
 #' context_size_values <- c(2, 3, 4)
 #' data("rocstories", package = "Tianchengfinal")
 #' # must do: define the parameters passed to the run_simulation function
-#' other_params <- list(data = rocstories, n_simulations = 50, random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3,epochs=20, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
+#' other_params <- list(data = rocstories, n_simulations = 50, random_seed = 900, train_portion = 0.8, val_portion = 0.1, test_portion = 0.1, lowest_frequency = 3, batch_size=256, epochs=20, h=50, learning_rate=5e-3, early_stop_min_delta=0.01,early_stop_patience=2,verbose=1)
 #' results <- run_simulations(embedding_dim_values=embedding_dim_values, param_values=context_size_values, param_name="context_size", other_params)
 #' @import stringr
 #' @import tm
@@ -118,7 +120,7 @@ run_simulations <- function(embedding_dim_values, param_values, param_name, othe
 #' run_simulation(data = rocstories, n_simulations=10, random_seed=900)
 #'
 #' @export
-run_simulation <- function(data,n_simulations=10, random_seed=900, context_size=3, train_portion=0.8, val_portion=0.1, test_portion=0.1, lowest_frequency=3, embedding_dim=30, batch_size=256, epochs=10, h=50, learning_rate=5e-3, early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
+run_simulation <- function(data,n_simulations=10, random_seed=900, context_size=3, train_portion=0.8, val_portion=0.1, test_portion=0.1, lowest_frequency=3, embedding_dim=30, batch_size=256, epochs=20, h=50, learning_rate=5e-3, early_stop_min_delta=0.05,early_stop_patience=3,verbose=1) {
   # Assertions
   if (!is.numeric(n_simulations) || length(n_simulations) != 1 || round(n_simulations) != n_simulations || n_simulations < 0) {
     stop("n_simulations must be a non-negative integer")
